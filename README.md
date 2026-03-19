@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h1>🚀 Letter Leap</h1>
+  <p><i>A muscle-memory-based, spaced-repetition spelling application.</i></p>
+</div>
 
-## Getting Started
+---
 
-First, run the development server:
+## 🌟 Features
+
+Letter Leap is designed to help you master spelling through active recall and muscle memory. Our core mechanics include:
+
+- **🔊 Audio Pronunciation:** Built-in Web Speech API integration helps you listen and learn.
+- **⌨️ Muscle Memory Focus:** 25x typing repetition for each word to solidify correct spelling physically.
+- **🧠 Spaced Repetition System (SRS):** Anki-style difficulty grading (Hard/Good/Easy) ensures optimal learning intervals.
+- **🎯 Paced Learning:** A 10-word daily limit maintains consistency while preventing fatigue.
+- **⏰ Smart Rollover:** Daily limits reset logically at 1:30 AM local time, accommodating night owls.
+
+---
+
+## 🛠️ Tech Stack
+
+This project is built with modern, scalable, and beautifully designed technologies:
+
+- **[Next.js (App Router)](https://nextjs.org/)** - The React framework for the web
+- **[TypeScript](https://www.typescriptlang.org/)** - For type-safe and reliable code
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first styling for rapid UI development
+- **[shadcn/ui](https://ui.shadcn.com/)** - Accessible and highly customizable UI components
+- **[Prisma](https://www.prisma.io/)** - Next-generation Node.js and TypeScript ORM
+- **[PostgreSQL](https://www.postgresql.org/)** - Powerful, open-source object-relational database
+
+---
+
+## 🚀 Getting Started
+
+Follow these clear instructions to set up and run Letter Leap locally on your machine.
+
+### 1. Clone & Install Dependencies
+
+Clone the repository and install all required Node.js packages:
+
+```bash
+git clone <your-repo-url>
+cd letter-leap
+npm install
+```
+
+### 2. Set Environment Variables
+
+Create a `.env` file in the root directory of the project. You'll need to provide your local PostgreSQL connection string:
+
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/letter_leap_db?schema=public"
+```
+*(Replace `user`, `password`, and `letter_leap_db` with your actual local PostgreSQL credentials).*
+
+### 3. Database Setup
+
+Build the database schema and generate the required Prisma client types:
+
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+### 4. Seed the Database
+
+Letter Leap comes with a hidden admin route to easily populate your database. 
+
+1. Ensure you have your `words.txt` file placed in the expected directory (one word per line).
+2. Start the development server (see step 5).
+3. Open your browser and navigate to the hidden route: `http://localhost:3000/admin/seed`. This will trigger the seeding process and populate your database with words.
+
+### 5. Run the Development Server
+
+Start the Next.js development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser to start spelling with Letter Leap!
