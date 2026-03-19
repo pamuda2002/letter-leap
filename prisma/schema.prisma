@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Word {
+  id        String     @id @default(cuid())
+  text      String     @unique
+  createdAt DateTime   @default(now())
+  cards     DeckCard[]
+}
+
+model DeckCard {
+  id             String   @id @default(cuid())
+  wordId         String
+  word           Word     @relation(fields: [wordId], references: [id])
+  nextReviewDate DateTime @default(now())
+  intervalDays   Float    @default(0)
+  isNew          Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
