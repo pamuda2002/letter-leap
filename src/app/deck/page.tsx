@@ -66,6 +66,7 @@ export default function DeckPage() {
   const hardDays = Math.round(baseInterval * 1.5);
   const goodDays = Math.round(baseInterval * 2.0);
   const easyDays = Math.round(baseInterval * 3.0);
+  const masteredDays = Math.round(baseInterval * 10.0);
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full py-16 animate-in slide-in-from-right-8 duration-500">
@@ -84,7 +85,7 @@ export default function DeckPage() {
           <h2 className="text-6xl md:text-8xl font-black uppercase tracking-widest">{currentCard.word.text}</h2>
           <p className="text-xl text-muted-foreground font-medium">How difficult was this spelling?</p>
           
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 w-full">
             <button onClick={() => handleReview('reset')} className="px-2 py-6 rounded-3xl bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400 font-bold hover:scale-105 hover:bg-red-200 dark:hover:bg-red-900/60 transition-all border border-red-200 dark:border-red-900 shadow-sm flex flex-col items-center gap-1">
               <span className="text-xl">Reset</span>
               <span className="text-xs opacity-80 font-mono tracking-widest uppercase">0 days</span>
@@ -100,6 +101,10 @@ export default function DeckPage() {
             <button onClick={() => handleReview(3.0)} className="px-2 py-6 rounded-3xl bg-blue-100 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-bold hover:scale-105 hover:bg-blue-200 dark:hover:bg-blue-900/60 transition-all border border-blue-200 dark:border-blue-900 shadow-sm flex flex-col items-center gap-1">
               <span className="text-xl">Easy</span>
               <span className="text-xs opacity-80 font-mono tracking-widest uppercase">{easyDays} {easyDays === 1 ? 'Day' : 'Days'}</span>
+            </button>
+            <button onClick={() => handleReview(10.0)} className="col-span-2 sm:col-span-1 px-2 py-6 rounded-3xl bg-purple-100 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 font-bold hover:scale-105 hover:bg-purple-200 dark:hover:bg-purple-900/60 transition-all border border-purple-200 dark:border-purple-900 shadow-sm flex flex-col items-center gap-1">
+              <span className="text-xl">Mastered</span>
+              <span className="text-xs opacity-80 font-mono tracking-widest uppercase">{masteredDays} {masteredDays === 1 ? 'Day' : 'Days'}</span>
             </button>
           </div>
         </div>
