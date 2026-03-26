@@ -163,7 +163,12 @@ export async function getNewWords(limit = 10) {
 // Add a word to the user's active Deck
 export async function addWordToDeck(wordId: string) {
   const localNow = getNowInSriLanka();
-  const targetDate = standardizeToRolloverTime(localNow);
+  
+  // Shift local time back by 90 minutes (1.5 hours) to determine the "logical" day.
+  // Because rollover is at 1:30 AM, any time before 1:30 AM belongs to the previous calendar day.
+  const logicalNow = new Date(localNow.getTime() - 90 * 60 * 1000);
+  
+  const targetDate = standardizeToRolloverTime(logicalNow);
   const nextReviewDate = await findNextAvailableDate(targetDate);
 
   const card = await prisma.deckCard.create({
@@ -218,10 +223,14 @@ export async function updateCardReview(
 
   // Start from today in Sri Lanka, add the required days
   const localNow = getNowInSriLanka();
+  
+  // Shift to logical day (rollover at 1:30 AM)
+  const logicalNow = new Date(localNow.getTime() - 90 * 60 * 1000);
+  
   const futureLocal = new Date(Date.UTC(
-    localNow.getUTCFullYear(),
-    localNow.getUTCMonth(),
-    localNow.getUTCDate() + daysToAdd
+    logicalNow.getUTCFullYear(),
+    logicalNow.getUTCMonth(),
+    logicalNow.getUTCDate() + daysToAdd
   ));
 
   const standardized = standardizeToRolloverTime(futureLocal);
