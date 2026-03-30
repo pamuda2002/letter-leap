@@ -12,8 +12,11 @@ Letter Leap is designed to help you master spelling through active recall and mu
 - **🔊 Audio Pronunciation:** Built-in Web Speech API integration helps you listen and learn.
 - **⌨️ Muscle Memory Focus:** 25x typing repetition for each word to solidify correct spelling physically.
 - **🧠 Spaced Repetition System (SRS):** Anki-style difficulty grading (Hard/Good/Easy) ensures optimal learning intervals.
+- **🏅 Mastery Reward System:** Mark a word as "Mastered" to significantly reduce future typing reps down to 10.
 - **🎯 Paced Learning:** A 10-word daily limit maintains consistency while preventing fatigue.
 - **⏰ Smart Rollover:** Daily limits reset logically at 1:30 AM local time, accommodating night owls.
+- **🌗 Dark Mode:** A beautifully designed dark theme context to reduce eye strain.
+- **🌍 Timezone-Aware:** All dates and rollovers strictly respect the local Sri Lanka (UTC+5:30) timezone.
 
 ---
 

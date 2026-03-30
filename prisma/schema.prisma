@@ -25,4 +25,5 @@ model DeckCard {
   intervalDays   Float    @default(0)
   isNew          Boolean  @default(true)
   createdAt      DateTime @default(now())
+  wasMastered    Boolean  @default(false)
 }

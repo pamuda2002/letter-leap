@@ -242,6 +242,7 @@ export async function updateCardReview(
       intervalDays: newInterval,
       nextReviewDate: finalDate,
       isNew: false,
+      wasMastered: multiplier === 10.0,
     },
   });
 }

@@ -77,7 +77,7 @@ export default function DeckPage() {
           word={currentCard.word.text} 
           remainingCount={dueCards.length - currentIndex}
           showWord={false}
-          targetReps={25}
+          targetReps={currentCard.wasMastered ? 10 : 25}
           onComplete={handleWordComplete} 
         />
       ) : (
